@@ -1,8 +1,8 @@
 import "./styles.css";
 import React from "react";
 
-const inputCep = document.forms.newAddress.cep;
-console.log("inputCep", inputCep);
+// const inputCep = document.forms.newAddress.cep;
+// console.log("inputCep", inputCep);
 
 export default function ModalCep({ isActive }) {
   return (

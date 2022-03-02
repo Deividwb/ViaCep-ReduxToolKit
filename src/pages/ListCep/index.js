@@ -3,6 +3,7 @@ import "./styles.css";
 import { cepMock } from "../../Mock";
 import { useState } from "react";
 import ModalCep from "../ModalCep";
+import ModalController from "../../controllers/modal-controller";
 
 const ListCep = () => {
   const [isContainerOpen, setContainerIsOpen] = useState(false);

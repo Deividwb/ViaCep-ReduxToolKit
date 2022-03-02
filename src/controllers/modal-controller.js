@@ -3,10 +3,10 @@ import { useState } from "react";
 const ModalController = () => {
   const [isContainerOpen, setContainerIsOpen] = useState(false);
 
-  const closeButton = () => {
+  const handleBtnCloseClick = () => {
     setContainerIsOpen(false);
   };
-  const signInButton = () => {
+  const handleBtnOpenClick = () => {
     setContainerIsOpen(true);
   };
 };
