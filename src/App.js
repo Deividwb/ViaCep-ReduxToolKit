@@ -1,8 +1,13 @@
-
+import NavBar from "./components/NavBar";
+import Router from "./Router";
+import 'bootstrap/dist/css/bootstrap.css';
 
 function App() {
   return (
-   <h1>hello</h1>
+    <>
+    <NavBar/>
+    <Router/>
+    </>   
   );
 }
 

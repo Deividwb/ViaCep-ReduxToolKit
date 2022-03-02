@@ -1,0 +1,10 @@
+.card {
+  box-sizing: border-box;
+  max-width: 350px;
+  border-radius: 10px;
+}
+
+.card-city {
+  font-weight: 700;
+
+}
