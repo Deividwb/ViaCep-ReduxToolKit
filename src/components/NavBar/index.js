@@ -1,11 +1,24 @@
+import React, { useState } from "react";
 import "./styles.css";
+import ListCep, { handleBtnOpenClick } from "../../pages/ListCep";
 
 const NavBar = () => {
+  const [isContainerOpen, setContainerIsOpen] = useState(false);
+
+  function alertOn() {
+    handleBtnOpenClick();
+    // alert("Dentro Nav ");
+  }
+
   return (
     <header class="nav-container">
       <nav class="nav-main">
-        <h1>Via CEP</h1>
-        <div class="contact-link">Buscar Cep</div>
+        <a href="/cep">
+          <h1> Via CEP</h1>
+        </a>
+        <div class="contact-link">
+          <a onClick={alertOn}>Buscar Cep</a>
+        </div>
       </nav>
     </header>
   );

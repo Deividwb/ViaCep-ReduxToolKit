@@ -59,11 +59,15 @@ export default function ModalCep({ isActive }) {
                     disabled
                   />
                 </div>
-                <div class="btn-container">
-                  <button name="btnSave" class="btn btn-left" type="submit">
+                <div className="btn-container ">
+                  <button
+                    name="btnSave"
+                    className=" effect effect-2 "
+                    type="submit"
+                  >
                     Salvar
                   </button>
-                  <button name="btnClear" class="btn btn-right">
+                  <button name="btnClear" className="effect effect-2">
                     Limpar
                   </button>
                 </div>
@@ -71,9 +75,10 @@ export default function ModalCep({ isActive }) {
             </div>
           </section>
         </div>
+
         <button
           id="modal-contact-close"
-          class="btn "
+          className="size-button effect effect-2"
           onClick={"handleBtnCloseClick"}
         >
           Fechar
