@@ -6,7 +6,7 @@ import ModalCep from "../ModalCep";
 import NavBar from "../../components/NavBar";
 
 const ListCep = () => {
-  const [isContainerOpen, setContainerIsOpen] = useState(true);
+  const [isContainerOpen, setContainerIsOpen] = useState(false);
 
   function handleBtnCloseClick() {
     setContainerIsOpen(false);
