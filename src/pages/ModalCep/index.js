@@ -1,7 +1,7 @@
 import "./styles.css";
 import React, { useState } from "react";
 import { toast } from "react-toastify";
-import { useSelector } from "react-redux";
+import api from "../../Services/api";
 
 // const inputCep = document.forms.newAddress.cep;
 // console.log("inputCep", inputCep);
@@ -12,13 +12,22 @@ export default function ModalCep({ isActive }) {
   const [number, setNumber] = useState("");
   const [city, setCity] = useState("");
 
+  async function loadCep() {
+    const response = await api.get("/01001000/json");
+    console.log(response);
+  }
+
+  // const inputCep = document.forms.newAddress.cep;
+  // console.log("inputCep", inputCep.value);
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
     if (!cep || !street || !number || !city) {
+      console.log(cep, number);
       return toast.warning("Por favor, preencha todos os campos!!");
-      console.log(cep, number)
     }
+    // inputCep = cep.value;
   };
 
   return (
@@ -103,7 +112,7 @@ export default function ModalCep({ isActive }) {
         <button
           id="modal-contact-close"
           className="size-button effect effect-2"
-          onClick={"handleBtnCloseClick"}
+          onClick={loadCep}
         >
           Fechar
         </button>

@@ -1,11 +1,10 @@
 import "./styles.css";
-
 import { cepMock } from "../../Mock";
 import { useState } from "react";
 import ModalCep from "../ModalCep";
 
 const ListCep = (props) => {
-  const [isContainerOpen, setContainerIsOpen] = useState(true);
+  const [isContainerOpen, setContainerIsOpen] = useState(false);
 
   function handleBtnCloseClick() {
     setContainerIsOpen(true);
