@@ -1,15 +1,18 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Home from "./pages/Home";
+import { ToastContainer } from "react-toastify";
+
 import ListCep from "./pages/ListCep";
 
 const Router = () => {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/cep" element={<ListCep />} />
-      </Routes>
-    </BrowserRouter>
+    <>
+      <ToastContainer />
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<ListCep />} />
+        </Routes>
+      </BrowserRouter>
+    </>
   );
 };
 

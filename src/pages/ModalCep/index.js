@@ -1,21 +1,37 @@
 import "./styles.css";
-import React from "react";
+import React, { useState } from "react";
+import { toast } from "react-toastify";
+import { useSelector } from "react-redux";
 
 // const inputCep = document.forms.newAddress.cep;
 // console.log("inputCep", inputCep);
 
 export default function ModalCep({ isActive }) {
+  const [cep, setCep] = useState("");
+  const [street, setStreet] = useState("");
+  const [number, setNumber] = useState("");
+  const [city, setCity] = useState("");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    if (!cep || !street || !number || !city) {
+      return toast.warning("Por favor, preencha todos os campos!!");
+      console.log(cep, number)
+    }
+  };
+
   return (
     <section
       id="modal-contact"
       class={`modal-container ${isActive === true ? "active" : ""}`}
     >
       <div class="modal-box">
-        <div class="modal-content">
+        <div className="modal-content">
           <section id="form-section" class="form-container">
-            <div class="card-form">
-              <form name="newAddress">
-                <div class="form-control">
+            <div className="card-form">
+              <form onSubmit={handleSubmit} name="newAddress">
+                <div className="form-control">
                   <label for="cep">CEP:</label>
                   <input
                     name="cep"
@@ -23,6 +39,8 @@ export default function ModalCep({ isActive }) {
                     class="form-input"
                     type="text"
                     placeholder="CEP"
+                    value={cep}
+                    onChange={(e) => setCep(e.target.value)}
                   />
                   <div class="error-message" data-error="cep"></div>
                 </div>
@@ -34,6 +52,8 @@ export default function ModalCep({ isActive }) {
                     class="form-input"
                     type="text"
                     placeholder="Logradouro"
+                    value={street}
+                    onChange={(e) => setStreet(e.target.value)}
                     disabled
                   />
                 </div>
@@ -45,6 +65,8 @@ export default function ModalCep({ isActive }) {
                     class="form-input"
                     type="text"
                     placeholder="Número"
+                    value={number}
+                    onChange={(e) => setNumber(e.target.value)}
                   />
                   <div class="error-message" data-error="number"></div>
                 </div>
@@ -56,6 +78,8 @@ export default function ModalCep({ isActive }) {
                     class="form-input"
                     type="text"
                     placeholder="Cidade"
+                    value={city}
+                    onChange={(e) => setCity(e.target.value)}
                     disabled
                   />
                 </div>
