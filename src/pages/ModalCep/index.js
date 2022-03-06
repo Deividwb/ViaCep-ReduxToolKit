@@ -1,7 +1,8 @@
 import "./styles.css";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import api from "../../Services/api";
+import axios from "axios";
 
 // const inputCep = document.forms.newAddress.cep;
 // console.log("inputCep", inputCep);
@@ -12,10 +13,21 @@ export default function ModalCep({ isActive }) {
   const [number, setNumber] = useState("");
   const [city, setCity] = useState("");
 
-  async function loadCep() {
-    const response = await api.get("/01001000/json");
-    console.log(response);
-  }
+  // async function loadCep() {
+  //   const response = await api.get("/01001000/json");
+  //   console.log(response.data);
+  // }
+
+  useEffect(() => {
+    axios
+      .get("https://viacep.com.br/ws/01001000/json/")
+      .then((response) => {
+        console.log(response.data);
+      })
+      .catch(() => {
+        console.log("Deu errado");
+      });
+  }, []);
 
   // const inputCep = document.forms.newAddress.cep;
   // console.log("inputCep", inputCep.value);
@@ -112,7 +124,7 @@ export default function ModalCep({ isActive }) {
         <button
           id="modal-contact-close"
           className="size-button effect effect-2"
-          onClick={loadCep}
+          onClick={"loadCep"}
         >
           Fechar
         </button>

@@ -1,14 +1,13 @@
 import "./styles.css";
 import { cepMock } from "../../Mock";
-import { useState } from "react";
+//import { useState } from "react";
 import ModalCep from "../ModalCep";
+//import NavBar from "../../components/NavBar";
 
-const ListCep = (props) => {
-  const [isContainerOpen, setContainerIsOpen] = useState(false);
+const ListCep = ({ isFunction }) => {
+  //const [isContainerOpen, setContainerIsOpen] = useState(false);
 
-  function handleBtnCloseClick() {
-    setContainerIsOpen(true);
-  }
+  function handleBtnCloseClick() {}
 
   const handleBtnOpenClick = () => {
     alert("Dentro ListCep");
@@ -25,7 +24,7 @@ const ListCep = (props) => {
           </div>
         </section>
       ))}
-      <ModalCep isActive={isContainerOpen} />
+      <ModalCep isActive={isFunction} />
     </>
   );
 };
