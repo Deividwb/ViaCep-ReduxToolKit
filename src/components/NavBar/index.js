@@ -14,7 +14,7 @@ const NavBar = () => {
       <nav class="nav-main">
         <h1> Via CEP</h1>
         <div class="contact-link">
-          <a onClick= {isFunction}>Buscar Cep</a>
+          <a onClick= {isFunction}>Contato</a>
          
         </div>
       </nav>

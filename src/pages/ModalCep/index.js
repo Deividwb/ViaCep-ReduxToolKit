@@ -3,15 +3,18 @@ import React, { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import api from "../../Services/api";
 import axios from "axios";
+import ListCep from "../ListCep";
 
 // const inputCep = document.forms.newAddress.cep;
 // console.log("inputCep", inputCep);
 
-export default function ModalCep({ isActive }) {
-  const [cep, setCep] = useState("");
-  const [street, setStreet] = useState("");
-  const [number, setNumber] = useState("");
-  const [city, setCity] = useState("");
+export default function ModalCep({ isActive, isClose }) {
+  const [llenarCep, setLlenarCep] = useState([
+    // cep:0,
+    // street:"",
+    // number:0,
+    // city:""
+  ]);
 
   // async function loadCep() {
   //   const response = await api.get("/01001000/json");
@@ -35,11 +38,13 @@ export default function ModalCep({ isActive }) {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (!cep || !street || !number || !city) {
-      console.log(cep, number);
-      return toast.warning("Por favor, preencha todos os campos!!");
+    if (!llenarCep.cep) {
+     // return toast.warning("Por favor, preencha todos os campos!!");
+    }else{
+    setLlenarCep((oldCep) => [...oldCep, llenarCep]);
+    setLlenarCep("");
+    console.log(llenarCep)
     }
-    // inputCep = cep.value;
   };
 
   return (
@@ -60,8 +65,8 @@ export default function ModalCep({ isActive }) {
                     class="form-input"
                     type="text"
                     placeholder="CEP"
-                    value={cep}
-                    onChange={(e) => setCep(e.target.value)}
+                    value={llenarCep.cep}
+                    onChange={(e) => setLlenarCep.cep(e.target.value)}
                   />
                   <div class="error-message" data-error="cep"></div>
                 </div>
@@ -73,8 +78,8 @@ export default function ModalCep({ isActive }) {
                     class="form-input"
                     type="text"
                     placeholder="Logradouro"
-                    value={street}
-                    onChange={(e) => setStreet(e.target.value)}
+                    value={llenarCep.street}
+                    onChange={(e) => setLlenarCep.street(e.target.value)}
                     disabled
                   />
                 </div>
@@ -86,8 +91,8 @@ export default function ModalCep({ isActive }) {
                     class="form-input"
                     type="text"
                     placeholder="Número"
-                    value={number}
-                    onChange={(e) => setNumber(e.target.value)}
+                    value={llenarCep.number}
+                    onChange={(e) => setLlenarCep.number(e.target.value)}
                   />
                   <div class="error-message" data-error="number"></div>
                 </div>
@@ -99,8 +104,8 @@ export default function ModalCep({ isActive }) {
                     class="form-input"
                     type="text"
                     placeholder="Cidade"
-                    value={city}
-                    onChange={(e) => setCity(e.target.value)}
+                    value={llenarCep.city}
+                    onChange={(e) => setLlenarCep.city(e.target.value)}
                     disabled
                   />
                 </div>
@@ -124,7 +129,7 @@ export default function ModalCep({ isActive }) {
         <button
           id="modal-contact-close"
           className="size-button effect effect-2"
-          onClick={"loadCep"}
+          onClick={isClose}
         >
           Fechar
         </button>

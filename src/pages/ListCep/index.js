@@ -2,19 +2,34 @@ import "./styles.css";
 import { cepMock } from "../../Mock";
 //import { useState } from "react";
 import ModalCep from "../ModalCep";
+import { useState } from "react";
 //import NavBar from "../../components/NavBar";
+import { toast } from "react-toastify";
 
-const ListCep = ({ isFunction }) => {
-  //const [isContainerOpen, setContainerIsOpen] = useState(false);
+const ListCep = ({ isFunction}) => {
+  const [isContainerOpen, setContainerIsOpen] = useState(false);
 
-  function handleBtnCloseClick() {}
+  function handleBtnCloseClick() {
+    setContainerIsOpen(false);
+  }
 
   const handleBtnOpenClick = () => {
-    alert("Dentro ListCep");
+    toast.warning("Preencha os Campos");
+    setContainerIsOpen(true);
+ 
   };
 
   return (
     <>
+      <div className="cep-btn">
+        <button
+          name="btnCep"
+          className="effect effect-2"
+          onClick={handleBtnOpenClick}
+        >
+          Buscar Cep
+        </button>
+      </div>
       {cepMock.map((cep) => (
         <section id="list-section" class="list-container">
           <div class="card-list-item">
@@ -24,7 +39,10 @@ const ListCep = ({ isFunction }) => {
           </div>
         </section>
       ))}
-      <ModalCep isActive={isFunction} />
+      <ModalCep isActive={isContainerOpen} 
+      isClose = {handleBtnCloseClick}
+      />    
+      
     </>
   );
 };
