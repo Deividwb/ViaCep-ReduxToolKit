@@ -1,12 +1,12 @@
 import "./styles.css";
-import { cepMock } from "../../Mock";
+import {cepMock} from "../../Mock";
 //import { useState } from "react";
 import ModalCep from "../ModalCep";
-import { useState } from "react";
-//import NavBar from "../../components/NavBar";
-import { toast } from "react-toastify";
+import {useState} from "react";
+import {toast} from "react-toastify";
+import NavBar from "../../components/NavBar";
 
-const ListCep = ({ isFunction}) => {
+const ListCep = () => {
   const [isContainerOpen, setContainerIsOpen] = useState(false);
 
   function handleBtnCloseClick() {
@@ -16,8 +16,9 @@ const ListCep = ({ isFunction}) => {
   const handleBtnOpenClick = () => {
     toast.warning("Preencha os Campos");
     setContainerIsOpen(true);
- 
   };
+ 
+   
 
   return (
     <>
@@ -39,10 +40,10 @@ const ListCep = ({ isFunction}) => {
           </div>
         </section>
       ))}
-      <ModalCep isActive={isContainerOpen} 
-      isClose = {handleBtnCloseClick}
-      />    
-      
+      <ModalCep
+        isActive={isContainerOpen}
+        isClose={handleBtnCloseClick}          
+      />
     </>
   );
 };

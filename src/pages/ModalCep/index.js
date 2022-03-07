@@ -8,29 +8,60 @@ import ListCep from "../ListCep";
 // const inputCep = document.forms.newAddress.cep;
 // console.log("inputCep", inputCep);
 
-export default function ModalCep({ isActive, isClose }) {
-  const [llenarCep, setLlenarCep] = useState([
-    // cep:0,
-    // street:"",
-    // number:0,
-    // city:""
-  ]);
+export default function ModalCep({ isActive, isClose, testeModal}) {
+
+  const [inputCep, setInputCep] = useState({
+    'cep': "",
+  }) 
+
+  function testeModal(){
+    const test = inputCep
+  }
+   
+  const [arrayCep, setArrayCep] = useState([]);
+
+  const handleInputChange = (event) => {
+    setInputCep(event.target.value);
+  };
+
+  const handleFormCepSubmit = (event) => {
+    event.preventDefault();
+    setArrayCep(oldCep => [
+      ...oldCep,
+       inputCep,       
+      
+      ])
+    
+    setInputCep({
+      cep: '',
+    
+    });
+    console.log(inputCep);
+    console.log("===============");    
+    console.log(arrayCep);
+  };
+
+  //  cep: 0,
+  //     street: "",
+  //     number: 0,
+  //     city: "",
+
 
   // async function loadCep() {
   //   const response = await api.get("/01001000/json");
   //   console.log(response.data);
   // }
 
-  useEffect(() => {
-    axios
-      .get("https://viacep.com.br/ws/01001000/json/")
-      .then((response) => {
-        console.log(response.data);
-      })
-      .catch(() => {
-        console.log("Deu errado");
-      });
-  }, []);
+  // useEffect(() => {
+  //   axios
+  //     .get("https://viacep.com.br/ws/01001000/json/")
+  //     .then((response) => {
+  //       console.log(response.data);
+  //     })
+  //     .catch(() => {
+  //       console.log("Deu errado");
+  //     });
+  // }, []);
 
   // const inputCep = document.forms.newAddress.cep;
   // console.log("inputCep", inputCep.value);
@@ -38,12 +69,12 @@ export default function ModalCep({ isActive, isClose }) {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (!llenarCep.cep) {
-     // return toast.warning("Por favor, preencha todos os campos!!");
-    }else{
-    setLlenarCep((oldCep) => [...oldCep, llenarCep]);
-    setLlenarCep("");
-    console.log(llenarCep)
+    if (!arrayCep.cep) {
+      // return toast.warning("Por favor, preencha todos os campos!!");
+    } else {
+      setArrayCep((oldCep) => [...oldCep, arrayCep]);
+      setArrayCep("");
+      console.log(arrayCep);
     }
   };
 
@@ -56,7 +87,7 @@ export default function ModalCep({ isActive, isClose }) {
         <div className="modal-content">
           <section id="form-section" class="form-container">
             <div className="card-form">
-              <form onSubmit={handleSubmit} name="newAddress">
+              <form onSubmit={handleFormCepSubmit} name="newAddress">
                 <div className="form-control">
                   <label for="cep">CEP:</label>
                   <input
@@ -65,8 +96,8 @@ export default function ModalCep({ isActive, isClose }) {
                     class="form-input"
                     type="text"
                     placeholder="CEP"
-                    value={llenarCep.cep}
-                    onChange={(e) => setLlenarCep.cep(e.target.value)}
+                    value={inputCep.cep}
+                    onChange={handleInputChange}
                   />
                   <div class="error-message" data-error="cep"></div>
                 </div>
@@ -78,9 +109,9 @@ export default function ModalCep({ isActive, isClose }) {
                     class="form-input"
                     type="text"
                     placeholder="Logradouro"
-                    value={llenarCep.street}
-                    onChange={(e) => setLlenarCep.street(e.target.value)}
-                    disabled
+                    value={inputCep.street}
+                    onChange={handleInputChange}
+                    // disabled
                   />
                 </div>
                 <div class="form-control">
@@ -91,8 +122,8 @@ export default function ModalCep({ isActive, isClose }) {
                     class="form-input"
                     type="text"
                     placeholder="Número"
-                    value={llenarCep.number}
-                    onChange={(e) => setLlenarCep.number(e.target.value)}
+                    value={arrayCep.number}
+                    onChange={handleInputChange}
                   />
                   <div class="error-message" data-error="number"></div>
                 </div>
@@ -104,9 +135,9 @@ export default function ModalCep({ isActive, isClose }) {
                     class="form-input"
                     type="text"
                     placeholder="Cidade"
-                    value={llenarCep.city}
-                    onChange={(e) => setLlenarCep.city(e.target.value)}
-                    disabled
+                    value={arrayCep.city}
+                    onChange={handleInputChange}
+                    // disabled
                   />
                 </div>
                 <div className="btn-container ">
@@ -133,7 +164,7 @@ export default function ModalCep({ isActive, isClose }) {
         >
           Fechar
         </button>
-      </div>
+      </div>    
     </section>
   );
 }
