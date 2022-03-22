@@ -1,29 +1,21 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from 'react'
+import { cepContext } from '../../controllers/cepContext'
 
-import "./styles.css";
+import './styles.css'
 
-const NavBar = ({ onNavClick }) => {
-  const [isFunction, setIsFunction] = useState(false);
-
-  function onNavClick() {
-    setIsFunction(true);
-    alert("Fazer Funcionar no List");
-  }
-
-  function offNavClick() {
-    setIsFunction(false);
-  }
+const NavBar = () => {
+  const { handleBtnOpenClick } = useContext(cepContext)
 
   return (
     <header class="nav-container">
       <nav class="nav-main">
         <h1> Via CEP</h1>
         <div class="contact-link">
-          <a onClick={onNavClick}>Contato</a>
+          <a onClick={handleBtnOpenClick}>Contato</a>
         </div>
       </nav>
     </header>
-  );
-};
+  )
+}
 
-export default NavBar;
+export default NavBar
